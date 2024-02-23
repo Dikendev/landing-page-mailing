@@ -1,4 +1,4 @@
-import { UseCaseError } from './use-case-error';
+import { UseCaseError } from './use-case-error.interface';
 
 export class MailServiceError extends Error implements UseCaseError {
   constructor() {
