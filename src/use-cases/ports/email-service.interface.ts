@@ -11,7 +11,17 @@ export interface EmailOptions {
   readonly subject: string;
   readonly text: string;
   readonly html: string;
-  readonly attachments: object[];
+  readonly attachments: Attachment[];
+}
+
+interface Attachment {
+  filename: string;
+  contentType: ContentType;
+}
+
+export enum ContentType {
+  txt = 'text/plain',
+  zip = 'application/zip',
 }
 
 export interface EmailService {
