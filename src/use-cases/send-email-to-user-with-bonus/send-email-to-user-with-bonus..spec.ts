@@ -70,4 +70,16 @@ describe('Send email to user with bonus use case', () => {
     });
     expect(result).toBeInstanceOf(Right);
   });
+
+  test('should raise error when email service fails', async () => {
+    const { sut, mailServiceStub } = makeSut();
+    jest
+      .spyOn(mailServiceStub, 'send')
+      .mockResolvedValueOnce(Promise.resolve(left(new MailServiceError())));
+    const result = await sut.sendEmailToUserWithBonus({
+      name: toName,
+      email: toEmail,
+    });
+    expect(result.value).toBeInstanceOf(MailServiceError);
+  });
 });
