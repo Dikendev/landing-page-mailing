@@ -51,3 +51,14 @@ const makeSut = (): {
   const sut = new SendEmailToUserWithBonus(mailOptions, mailServiceStub);
   return { sut, mailServiceStub };
 };
+
+describe('Send email to user with bonus use case', () => {
+  test('should not email user with invalid email address', async () => {
+    const { sut } = makeSut();
+    const result = await sut.sendEmailToUserWithBonus({
+      name: toName,
+      email: 'invalid_email',
+    });
+    expect(result).toBeInstanceOf(Left);
+  });
+});
