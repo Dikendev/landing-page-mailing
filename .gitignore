@@ -14,10 +14,14 @@ lerna-debug.log*
 # OS
 .DS_Store
 
+# resources
+src/use-cases/resources
+src/use-cases/resources/test.txt
+
 # Tests
 /coverage
 /.nyc_output
-
+œ
 # IDEs and editors
 /.idea
 .project
