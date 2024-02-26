@@ -61,4 +61,13 @@ describe('Send email to user with bonus use case', () => {
     });
     expect(result).toBeInstanceOf(Left);
   });
+
+  test('should email user with attachment', async () => {
+    const { sut } = makeSut();
+    const result = await sut.sendEmailToUserWithBonus({
+      name: toName,
+      email: toEmail,
+    });
+    expect(result).toBeInstanceOf(Right);
+  });
 });
