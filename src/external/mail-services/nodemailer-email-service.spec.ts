@@ -57,4 +57,11 @@ describe('Nodemailer mail service adapter', () => {
   test('should nodemailerService to be defined', () => {
     expect(makeSut).toBeDefined();
   });
+
+  test('should return ok if email is send', async () => {
+    const sut = makeSut();
+    sendMailMock.mockReturnValueOnce('ok');
+    const result = await sut.send(mailOptions);
+    expect(result.value).toEqual(mailOptions);
+  });
 });
