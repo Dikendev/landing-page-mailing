@@ -64,4 +64,19 @@ describe('Nodemailer mail service adapter', () => {
     const result = await sut.send(mailOptions);
     expect(result.value).toEqual(mailOptions);
   });
+
+  test('should call nodemailer createTransport with correct options', async () => {
+    const sut = makeSut();
+    const spyCreateTransport = jest.spyOn(nodemailer, 'createTransport');
+    await sut.send(mailOptions);
+
+    expect(spyCreateTransport).toHaveBeenCalledWith({
+      host: 'host',
+      port: 666,
+      auth: {
+        user: 'any_username',
+        pass: 'any_password',
+      },
+    });
+  });
 });
