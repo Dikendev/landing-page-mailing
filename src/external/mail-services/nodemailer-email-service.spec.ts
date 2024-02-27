@@ -21,3 +21,9 @@ beforeEach(() => {
   sendMailMock.mockClear();
   nodemailer.createTransport.mockClear();
 });
+
+describe('Nodemailer mail service adapter', () => {
+  test('should nodemailerService to be defined', () => {
+    expect(makeSut).toBeDefined();
+  });
+});
