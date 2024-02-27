@@ -79,4 +79,14 @@ describe('Nodemailer mail service adapter', () => {
       },
     });
   });
+
+  test('should return error if email is not set', async () => {
+    const sut = makeSut();
+    nodemailer.createTransport.mockImplementationOnce({
+      sendMail: jest.fn().mockRejectedValueOnce(new Error()),
+    });
+    const result = await sut.send(mailOptions);
+    expect(result.isLeft()).toBeTruthy();
+    expect(result.value).toBeInstanceOf(MailServiceError);
+  });
 });
