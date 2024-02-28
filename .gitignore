@@ -37,3 +37,6 @@ src/use-cases/resources/test.txt
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Variable environment 
+.env
